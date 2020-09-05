@@ -5,7 +5,7 @@ using System.Text;
 namespace DPRN1_U3_A4_PIVM
 {
     [Serializable()]
-    public class Articulos
+    public class Articulo
     {
         private int _idArticulo;
         private string _articulo;

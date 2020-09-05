@@ -56,11 +56,15 @@ namespace DPRN1_U3_A4_PIVM
                 switch (opcion)
                 {
                 	case 1:
-                	// Registro de Articulos
-                	break;
+                        // Registro de Articulos
+                        RegistroArticulo();
+
+                    break;
                 	case 2:
-                	// Mostrar Articulos
-                	break;
+                        // Mostrar Articulos
+                        MostrarArticulos();
+
+                    break;
                 	case 3:
                 	// Caja
                 	break;
@@ -82,10 +86,54 @@ namespace DPRN1_U3_A4_PIVM
         	menu.menu();
         	Articulo articulo = new Articulo();
         	
-        	Console.WriteLine("id");
-        	
-        	
+        	Console.Write("id: ");
+            articuloidArticulo = Console.ReadLine();
+            Console.Write("Descripcion:");
+            articulo.articulo = Console.ReadLine();
+            Console.Write("Precio: ");
+            articulo.costo = Console.ReadLine();
+
+            listArticulos.Add(articulo);
+            dato.serializar(listArticulos);
+            Console.WriteLine("\n Los datos fueron Guardados")
+            Console.WriteLine("Presione una tecla");
+            Console.ReadKey();
         }
+        public void MostrarArticulos()
+        {
+            menu.menu();
+            Console.WriteLine("\nListado de Articulos");
+            foreach (Articulo b in listArticulos)
+            {
+                Console.WriteLine("Id: " + b.idArticulo + "Descripcion: " + b.articulo + "Precio" + costo);
+                Console.ReadKey();
+            }
+        }
+        public void MostrarVenta(int Venta)
+        {
+            
+            foreach (Ventas b in listVentas)
+            {
+                if (b.idVenta == Venta)
+                {
+
+                }
+            }
+        }
+        public void Caja()
+        {
+            Console.WriteLine("*** TIENDA EN LINEA DEPORTIVO ***");
+            MostrarArticulos();
+            Console.WriteLine("Seleccione el Id. de un articulo:");
+            IdArticulo = Console.ReadLine();
+            Console.WriteLine("Cantidad");
+
+            Console.WriteLine("Id.  Descripcion                     Costo.");
+
+
+        }
+
+
     }
 }
 
