@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace DPRN1_U3_A4_PIVM
 {
@@ -6,7 +7,10 @@ namespace DPRN1_U3_A4_PIVM
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            Menu menu = new Menu();
+            Proceso proceso =new Proceso();
+            proceso.SolicitarOpciones();
+            
+    }
     }
 }
