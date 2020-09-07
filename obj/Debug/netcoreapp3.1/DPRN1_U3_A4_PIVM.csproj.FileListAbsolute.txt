@@ -11,3 +11,16 @@ D:\OneDrive - Universidad Abierta y a Distancia de México\unadam\5 semestre\B1\
 D:\OneDrive - Universidad Abierta y a Distancia de México\unadam\5 semestre\B1\Programacion NET I\Unidad 3\Codigo\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.dll
 D:\OneDrive - Universidad Abierta y a Distancia de México\unadam\5 semestre\B1\Programacion NET I\Unidad 3\Codigo\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.pdb
 D:\OneDrive - Universidad Abierta y a Distancia de México\unadam\5 semestre\B1\Programacion NET I\Unidad 3\Codigo\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.genruntimeconfig.cache
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.exe
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.deps.json
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.runtimeconfig.json
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.runtimeconfig.dev.json
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.dll
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\bin\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.pdb
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.csprojAssemblyReference.cache
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.AssemblyInfoInputs.cache
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.AssemblyInfo.cs
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.csproj.CoreCompileInputs.cache
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.dll
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.pdb
+C:\Users\Pinotronic\Source\Repos\DPRN1_U3_A4_PIVM\obj\Debug\netcoreapp3.1\DPRN1_U3_A4_PIVM.genruntimeconfig.cache

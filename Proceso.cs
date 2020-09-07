@@ -37,13 +37,26 @@ namespace DPRN1_U3_A4_PIVM
             {
                 do
                 {
-                    if (File.Exists("Ventas.bd") && File.Exists("Ventas.bd") && File.Exists("Ventas.bd"))
+                    if (File.Exists("Ventas.bd"))
                     {
                         listVentas = datoVentas.deserializarVentas();
+                        Console.WriteLine("Hay AVenta ");
+                    }
+                    if (File.Exists("Articulos.bd"))
+                    {
                         listArticulos = datoArticulos.deserializarArticulos();
-                        listContenidoTransaccion = datoContenidoTransaccion.deserializarContenidoTransaccion();
                         Console.WriteLine("Hay Articulo ");
                     }
+                    if (File.Exists("ContenidoTransaccion.db"))
+                    {
+                        listContenidoTransaccion = datoContenidoTransaccion.deserializarContenidoTransaccion();
+                        Console.WriteLine("Hay Contenido ");
+                    }
+
+
+
+
+
                     menu.Menu1();
                     Console.WriteLine("Ingresa opcion valida [1 -5]");
                     opcion = int.Parse(Console.ReadLine());
@@ -69,6 +82,9 @@ namespace DPRN1_U3_A4_PIVM
                         break;
                     case 3:
                         // Caja
+                        Console.Clear();
+                        Caja();
+                        menu.Menu2();
                         break;
                     case 4:
                         // Mostrar Ventas
@@ -84,13 +100,8 @@ namespace DPRN1_U3_A4_PIVM
         }
         public void RegistroArticulo()
         {
-            Console.WriteLine("  ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████    ");
-            Console.WriteLine("  ███                                                                                                              ███    ");
-            Console.WriteLine("  ███                                           Caja de Tienda Deportiva                                           ███    ");
-            Console.WriteLine("  ███                                                                                                              ███    ");
-            Console.WriteLine("  ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████    ");
-
-            Articulo articulo = new Articulo();
+            menu.Menu2();
+             Articulo articulo = new Articulo();
             int id = ContadorArticulos() + 1;
             Console.WriteLine("id: " + id);
             articulo.IdArticulo = id;
@@ -107,7 +118,7 @@ namespace DPRN1_U3_A4_PIVM
         }
         public void MostrarArticulos()
         {
-            menu.Menu1();
+            menu.Menu2();
             Console.WriteLine("\nListado de Articulos");
             foreach (Articulo b in listArticulos)
             {
@@ -128,6 +139,7 @@ namespace DPRN1_U3_A4_PIVM
         }
         public void Caja()
         {
+            //Inicio Caja
             Ventas venta = new Ventas();
             ContenidoTransaccion contenido = new ContenidoTransaccion();
 
@@ -137,26 +149,37 @@ namespace DPRN1_U3_A4_PIVM
             folio = ContadorVenta() + 1;
             Console.WriteLine("Folio: " + folio);
 
-            Console.WriteLine("*** TIENDA EN LINEA DEPORTIVO ***");
+            Console.WriteLine("                               *** TIENDA EN LINEA DEPORTIVO ***");
+            // Mostrar Articulos
+
             MostrarArticulos();
-            Console.WriteLine("Seleccione el Id. de un articulo:");
+
+            // Seleccion Articulos
+            Console.WriteLine("\nSeleccione el Id. de un articulo:");
             int IdArticulo = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Cantidad");
             int cantidad = int.Parse(Console.ReadLine());
+
             (string DescripcionArticulo,int costo) =BuscandoArticulo(IdArticulo);
-            Console.WriteLine("Id.  Descripcion                     Costo.");
-            Console.WriteLine(IdArticulo + " " + DescripcionArticulo + " " + cantidad  + " " +   costo);
+
+            int costoSuma = costo * cantidad;
+
+            Console.WriteLine("Id.  Descripcion                   Cantidad       Costo.");
+            Console.WriteLine(IdArticulo + " " + DescripcionArticulo + "                     " + cantidad  + "         " + costoSuma);
+
             contenido.IdVenta = folio;
             contenido.Idarticulo = IdArticulo;
             contenido.Articulo = DescripcionArticulo;
-            contenido.Costo = costo;
+            contenido.Costo = costoSuma;
             contenido.Cantidad = cantidad;
-            Console.WriteLine("Para Agregar al carrito Precione 1 o 2");
+
+            Console.WriteLine("\nPara Agregar al carrito Precione 1 o 2");
             int opcion = int.Parse(Console.ReadLine());
 
             do
             {
-                if (opcion < 1 || opcion > 2)
+                if (opcion == 1 )
                 {
                     listContenidoTransaccion.Add(contenido);
                     subtotal = subtotal + costo;
@@ -164,16 +187,33 @@ namespace DPRN1_U3_A4_PIVM
                     Console.WriteLine("\n Los datos fueron Guardados");
 
                 }
-            } while (opcion != 2);
+            } while (opcion < 1 || opcion > 2);
+
             Console.WriteLine("Presione una tecla");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("Id.  Descripcion                     Costo.");
+
+            Console.WriteLine("Id.   Descripcion                       Cantidad         Costo.");
             (DescripcionArticulo, cantidad, costo, IdArticulo ) = BuscandoContenido(folio);
             
-            Console.WriteLine(IdArticulo + " " + DescripcionArticulo + " " + cantidad + " " + costo);
+            Console.WriteLine(IdArticulo + "  " + DescripcionArticulo + "               " + cantidad + "      " + costo);
+
+            Console.WriteLine("\nPara cobrar Selecciona  1 o 2");
+            opcion = int.Parse(Console.ReadLine());
+
+            do
+            {
+                if (opcion == 1)
+                {
+                Calulando(subtotal);
+                
+                }
+            } while (opcion < 1 || opcion > 2);
+
             //Costo
-            Calulando(subtotal);
+            Caja();
+
+
         }
         public void Calulando(int Subtotal)
         {
@@ -202,7 +242,9 @@ namespace DPRN1_U3_A4_PIVM
             Console.WriteLine("Descuento: " + descuento);
             int total = Subtotal - (descuento / 100);
             Console.WriteLine("---------------");
-            Console.WriteLine("    Total: ");
+            Console.WriteLine("     Total: ");
+
+            Console.WriteLine("Gracias por su compra");
         }
         public int ContadorArticulos()
         {
