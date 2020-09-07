@@ -8,12 +8,16 @@ namespace DPRN1_U3_A4_PIVM
     public class ContenidoTransaccion
     {
         private int _idVenta;
-        private int _articulo;
+        private int _cantidad;
+        private int _idarticulo;
+        private string _articulo;
         private int _costo;
 
-        public int idVenta { get => _idVenta; set => _idVenta = value; }
-        public int articulo { get => _articulo; set => _articulo = value; }
-        public int costo { get => _costo; set => _costo; }
+        public int IdVenta { get => _idVenta; set => _idVenta = value; }
+        public int Cantidad { get => _cantidad; set => _cantidad = value; }
+        public int Idarticulo { get => _idarticulo; set => _idarticulo = value; }
+        public string Articulo { get => _articulo; set => _articulo = value; }
+        public int Costo { get => _costo; set => _costo = value; }
     }
 
 }

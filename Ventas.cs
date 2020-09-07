@@ -12,10 +12,10 @@ namespace DPRN1_U3_A4_PIVM
         private DateTime _fecha;
         private int _montoFactura;
 
-        public int idVenta { get => _idVenta; set => _idVenta = value; }
-        public int numArticulos { get => _numArticulos; set => _numArticulos = value; }
-        public DateTime fecha { get => _fecha; set => _fecha = value; }
-        private int montoFactura { get => _montoFactura; set => _montoFactura = value; }
+        public int IdVenta { get => _idVenta; set => _idVenta = value; }
+        public int NumArticulos { get => _numArticulos; set => _numArticulos = value; }
+        public DateTime Fecha { get => _fecha; set => _fecha = value; }
+        private int MontoFactura { get => _montoFactura; set => _montoFactura = value; }
 
     }
 

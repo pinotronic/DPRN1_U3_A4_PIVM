@@ -14,7 +14,7 @@ namespace DPRN1_U3_A4_PIVM
         {
             this.ruta = ruta;
         }
-        public void serializarArticulos(List<Articulos> lista)
+        public void serializarArticulos(List<Articulo> lista)
         {
             Stream flujo = File.Open(ruta, FileMode.Create);
             BinaryFormatter bin = new BinaryFormatter();
@@ -32,14 +32,14 @@ namespace DPRN1_U3_A4_PIVM
         {
             Stream flujo = File.Open(ruta, FileMode.Create);
             BinaryFormatter bin = new BinaryFormatter();
-            bin.Serialize(flujo, lista);ContenidoTransaccion
+            bin.Serialize(flujo, lista);
             flujo.Close();
         }
-        public List<Articulos> deserializarArticulos()
+        public List<Articulo> deserializarArticulos()
         {
             Stream flujo = File.Open(ruta, FileMode.Open);
             BinaryFormatter bin = new BinaryFormatter();
-            List<Articulos> lista = (List<Articulos>)bin.Deserialize(flujo);
+            List<Articulo> lista = (List<Articulo>)bin.Deserialize(flujo);
             flujo.Close();
             return lista;
         }
@@ -51,14 +51,14 @@ namespace DPRN1_U3_A4_PIVM
             flujo.Close();
             return lista;
         }
-        public List<Ventas> deserializarContenidoTransaccion()
+        public List<ContenidoTransaccion> deserializarContenidoTransaccion()
         {
             Stream flujo = File.Open(ruta, FileMode.Open);
             BinaryFormatter bin = new BinaryFormatter();
             List<ContenidoTransaccion> lista = (List<ContenidoTransaccion>)bin.Deserialize(flujo);
             flujo.Close();
             return lista;
-        
+        }
     }
 }
 
