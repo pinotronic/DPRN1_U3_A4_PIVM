@@ -123,7 +123,7 @@ namespace DPRN1_U3_A4_PIVM
             foreach (Articulo b in listArticulos)
             {
                 Console.WriteLine("Id: " + b.IdArticulo + " Descripcion: " + b.Descripcion + " Precio $" + b.Costo);
-                Console.ReadKey();
+
             }
         }
         public void MostrarVenta(int Venta)
@@ -145,6 +145,7 @@ namespace DPRN1_U3_A4_PIVM
 
             int folio = 0;
             int subtotal=0;
+            venta.IdVenta = folio;
 
             folio = ContadorVenta() + 1;
             Console.WriteLine("Folio: " + folio);
@@ -161,19 +162,19 @@ namespace DPRN1_U3_A4_PIVM
             Console.WriteLine("Cantidad");
             int cantidad = int.Parse(Console.ReadLine());
 
-            (string DescripcionArticulo,int costo) =BuscandoArticulo(IdArticulo);
+            (string DescripcionArticulo,int costo) = BuscandoArticulo(IdArticulo);
 
             int costoSuma = costo * cantidad;
 
             Console.WriteLine("Id.  Descripcion                   Cantidad       Costo.");
-            Console.WriteLine(IdArticulo + " " + DescripcionArticulo + "                     " + cantidad  + "         " + costoSuma);
+            Console.WriteLine(IdArticulo + " " + DescripcionArticulo + "                        " + cantidad  + "         " + costoSuma);
 
             contenido.IdVenta = folio;
             contenido.Idarticulo = IdArticulo;
             contenido.Articulo = DescripcionArticulo;
             contenido.Costo = costoSuma;
             contenido.Cantidad = cantidad;
-
+            
             Console.WriteLine("\nPara Agregar al carrito Precione 1 o 2");
             int opcion = int.Parse(Console.ReadLine());
 
@@ -194,10 +195,11 @@ namespace DPRN1_U3_A4_PIVM
             Console.Clear();
 
             Console.WriteLine("Id.   Descripcion                       Cantidad         Costo.");
-            (DescripcionArticulo, cantidad, costo, IdArticulo ) = BuscandoContenido(folio);
+            int contador=0;
             
-            Console.WriteLine(IdArticulo + "  " + DescripcionArticulo + "               " + cantidad + "      " + costo);
-
+            (DescripcionArticulo, cantidad, costo, IdArticulo , subtotal, contador) = BuscandoContenido(folio);
+                         
+          //Costo
             Console.WriteLine("\nPara cobrar Selecciona  1 o 2");
             opcion = int.Parse(Console.ReadLine());
 
@@ -206,12 +208,21 @@ namespace DPRN1_U3_A4_PIVM
                 if (opcion == 1)
                 {
                 Calulando(subtotal);
-                
+                    venta.NumArticulos = contador;
+                    listVentas.Add(ventas);
+                    subtotal = subtotal + costo;
+                    datoVentas.serializarVentas(listVentas);
+                    Console.WriteLine("\n Los datos fueron Guardados");
+                }
+                else
+                {
+                    Console.Clear();
+                Caja();
                 }
             } while (opcion < 1 || opcion > 2);
 
-            //Costo
-            Caja();
+        
+
 
 
         }
@@ -242,9 +253,10 @@ namespace DPRN1_U3_A4_PIVM
             Console.WriteLine("Descuento: " + descuento);
             int total = Subtotal - (descuento / 100);
             Console.WriteLine("---------------");
-            Console.WriteLine("     Total: ");
+            Console.WriteLine("    Total: " + total);
 
             Console.WriteLine("Gracias por su compra");
+            Console.ReadKey();
         }
         public int ContadorArticulos()
         {
@@ -293,13 +305,15 @@ namespace DPRN1_U3_A4_PIVM
                 return new Tuple<string, int>(Descripcion, Costo);
 
         }
-        public Tuple<string, int, int, int> BuscandoContenido(int idVenta)
+        public Tuple<string, int, int, int, int,int> BuscandoContenido(int idVenta)
         {
 
             String Descripcion = "";
             int Cantidad = 0;
             int Costo = 0;
             int Idarticulo = 0;
+            int SubTotal = 0;
+            int Contador = 0;
 
             foreach (ContenidoTransaccion b in listContenidoTransaccion)
             {
@@ -310,10 +324,12 @@ namespace DPRN1_U3_A4_PIVM
                     Cantidad = b.Cantidad;
                     Costo = b.Costo;
                     Idarticulo = b.Idarticulo;
-                    
+                    Console.WriteLine(idVenta + "  " + Descripcion + "                    " + Cantidad + "      " + Costo);
+                    SubTotal = SubTotal + Costo;
+                    Contador = Contador + 1;
                 }
             }
-            return new Tuple<string, int, int , int>(Descripcion, Cantidad, Costo, Idarticulo);
+            return new Tuple<string, int, int , int, int,int>(Descripcion, Cantidad, Costo, Idarticulo, SubTotal,Contador);
 
         }
 
